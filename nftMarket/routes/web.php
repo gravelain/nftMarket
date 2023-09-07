@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+ // Route d'accueil, qui liste tous les NFT
+ Route::get('/', function () {
+    return view('nfts/nfts');
 });
 
-Route::get('/vente', function () {
-    return view('vente');
-});
+
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
