@@ -25,6 +25,16 @@
                     <img src="assets/logo/logo.png" width="14%" height="13%" srcset=""/>
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @if(Auth::check())
+                    <a class="navbar-brand" href="{{ route('home') }}" style="color: rgb(114, 4, 4)">
+                        {{-- <img src="assets/logo/logo.png" width="14%" height="13%" srcset=""/> --}}
+                        My collection
+                    </a>
+                    @else
+                    <span style="color: brown">
+                        IMPORTANT : &nbsp </span> <span> To buy an nft, you need to log in to your account. </span>
+                    
+                @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,7 +46,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="dropdown dropdown-access navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -82,3 +92,11 @@
     
 </body>
 </html>
+<style>
+    .link-home {
+        text-decoration: none;
+        color: black;
+        margin-left: -170px;
+        margin-bottom: 2px;
+    }
+</style>

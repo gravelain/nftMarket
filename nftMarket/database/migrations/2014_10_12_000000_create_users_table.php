@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->float('portefeuille', 20, 2)->default(5000)->unsigned();
             $table->string('password');
-            $table->integer('isAdmin')->nullable();
             $table->timestamps();
         });
     }
